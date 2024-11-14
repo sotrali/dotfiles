@@ -1,9 +1,9 @@
 * {
   font:   "IBM Plex Mono 10";
 
-  bg0     : #092d5f;
-  bg1     : #092d5f;
-  bg2     : #092d5f;
+  bg0     : #0f2443;
+  bg1     : #0f2443;
+  bg2     : #0f2443;
   fg0     : #e5c2be;
   fg1     : #c0caf5;
   fg2     : #a9b1d6;
