@@ -177,6 +177,10 @@ bar {
 	strip_workspace_numbers yes
 	tray_output none
 
+	separator_symbol "-"
+
+	padding 5px 15px
+
 	colors {
 	 	background $bg-color
 	    	separator $text-color
