@@ -1,0 +1,3 @@
+#! /bin/bash
+
+pacman -Qeq | fzf --preview="pacman -Qi {}"

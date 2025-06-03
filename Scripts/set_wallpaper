@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# get color scheme based on wallpaper provided to first (laptop) monitor
+wal -i /home/slime/Pictures/papes/${1} --cols16 -n
+
+# set wallpapers
+feh --bg-scale /home/slime/Pictures/papes/${1} /home/slime/Pictures/papes/${2}
+
+# link configs for non-supported wal programs
+ln -sf ~/.cache/wal/theme.rasi ~/.config/rofi/theme.rasi
+ln -sf ~/.cache/wal/conky.conf ~/.config/conky/conky.conf
+

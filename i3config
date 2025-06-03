@@ -161,45 +161,62 @@ bindsym $mod+r mode "resize"
 # START CUSTOM STUFF # 
 ######################
 
+# Screenshot
+bindsym $mod+Shift+x exec --no-startup-id scrot -s
+
 # Color variables 
-#set $bg-color 	         #2f343f
-set $bg-color 	         #0f2443
-set $inactive-bg-color   #0f2443
-#set $text-color         #c0caf5
-set $text-color          #e5c2be
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.foreground #f0f0f0
+set_from_resource $bg i3wm.background #f0f0f0
 
-# Start i3bar
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+# Pape
+exec_always --no-startup-id wal -Rn -o /home/slime/.fehbg
+
+# i3status
 bar {
-	position top
-        status_command i3blocks
-	strip_workspace_numbers yes
-	tray_output none
-
-	separator_symbol "-"
-
-	padding 5px 15px
-
-	colors {
-	 	background $bg-color
-	    	separator $text-color
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}	
+    position top
+    status_command i3blocks
+    strip_workspace_numbers yes
+    padding 5px 15px
+    tray_output none
+    separator_symbol "~"
+ 
+    colors {
+        background $bg
+        separator $fg
+        #                  border  bg  txt   
+	focused_workspace  $fg     $bg $fg
+	inactive_workspace $bg     $bg $fg
+	urgent_workspace   #E53935 $bg $fg
+    }
 }
 
-# Compositor
+# PROTIP: You can also dynamically set dmenu's colors this way:
+# bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"# Compositor
+	
 exec_always --no-startup-id picom --config /home/slime/.config/picom.conf 
 
-# Autostart
+# Autostart programs
 exec --no-startup-id i3-msg 'workspace number $ws10; exec --no-startup-id conky; workspace number $ws10'
-exec prime_offload
 
-# Pape 
-exec_always --no-startup-id feh --bg-scale ~/Pictures/papes/Oymyakon_forests.jpg
+# monitor + graphics driver setup 
+exec --no-startup-id /home/slime/.screenlayout/first_shot.sh
+exec --no-startup-id prime-offload
+
+# exec --no-startup-id set_wallpaper ~/Pictures/papes/green-horizon.png ~/Pictures/papes/ultrawide/deep-blue-5120x1440.jpg
 
 # Workspace assignment 
 assign [class="LibreWolf"]	$ws1 
