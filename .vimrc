@@ -13,7 +13,7 @@ let g:netrw_banner = 0
 let g:netrw_altv = 1
 let g:netrw_alto = 1
 let g:netrw_browse_split = 2
-map <silent> <C-E> :Lexplore<CR>
+" map <silent> <A-E> :Lexplore<CR>
 
 " indentation
 set tabstop=2

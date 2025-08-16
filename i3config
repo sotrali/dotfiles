@@ -1,5 +1,5 @@
-exec xrandr --setprovideroutputsource modesetting NVIDIA-0
-exec xrandr --auto 
+exec_always --no-startup-id xrandr --setprovideroutputsource modesetting NVIDIA-0
+exec_always --no-startup-id xrandr --auto 
 
 # me i3 config file :)
 
@@ -127,7 +127,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -f 'Source Code Pro 64px' -t error -m 'bye bye?' -B 'bye bye' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -f 'Source Code Pro 64px' -t error -m 'bye bye?' -B 'bye bye' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "rofi -show powermenu -modi powermenu:~/Scripts/rofi-power-menu -theme ~/.config/rofi/theme.rasi"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -210,13 +211,16 @@ bar {
 exec_always --no-startup-id picom --config /home/slime/.config/picom.conf 
 
 # Autostart programs
-exec --no-startup-id i3-msg 'workspace number $ws10; exec --no-startup-id conky; workspace number $ws10'
+# exec --no-startup-id i3-msg 'workspace number $ws10; exec --no-startup-id conky; workspace number $ws10'
 
 # monitor + graphics driver setup 
 exec --no-startup-id /home/slime/.screenlayout/first_shot.sh
 exec --no-startup-id prime-offload
 
-# exec --no-startup-id set_wallpaper ~/Pictures/papes/green-horizon.png ~/Pictures/papes/ultrawide/deep-blue-5120x1440.jpg
+exec --no-startup-id set_wallpaper snowy-steeple.jpg oymyakon_forests_hires.jpg
+
+# Opaqueness
+ bindsym $mod+p exec --no-startup-id picom-trans 100
 
 # Workspace assignment 
 assign [class="LibreWolf"]	$ws1 
@@ -257,6 +261,6 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Vim Keys
-exec_always xmodmap -e "clear lock" #disable caps lock switch
-exec_always xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+exec_always --no-startup-id xmodmap -e "clear lock" #disable caps lock switch
+exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
