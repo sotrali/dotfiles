@@ -18,9 +18,9 @@ unset color_prompt
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
-    alias l='ls -l --color=auto'
-    alias ls='ls --color=auto' 
-    alias la='ls -la --color=auto'
+    alias l='ls -lh --color=auto'
+    alias ls='ls -h --color=auto' 
+    alias la='ls -lha --color=auto'
     alias grep='grep --color=auto'
 
     alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
