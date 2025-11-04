@@ -231,7 +231,7 @@ assign [class="steam"]		$ws4
 for_window [class="Conky"] floating enable
 
 # Borders
-default_border 			pixel 2
+default_border 			pixel 0
 default_floating_border 	pixel 2
 
 # Gap 

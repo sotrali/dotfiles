@@ -8,12 +8,14 @@ set relativenumber
 set virtualedit=all
 
 " basic file explorer (p to preview hovered file, ctrl+w,z to close)
-let g:netrw_winsize = 15
+let g:netrw_winsize = 25
 let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
-let g:netrw_browse_split = 2
-" map <silent> <A-E> :Lexplore<CR>
+let g:netrw_browse_split = 4
+let g:netrw_preview = 1
+map <silent> _ :Lexplore<CR>
 
 " indentation
 set tabstop=2
@@ -26,7 +28,7 @@ set listchars=multispace:\ \ ▸
 " folding
 set foldmethod=indent
 set foldnestmax=20
-nnoremap U :syntax sync fromstart<cr>:redraw!<cr> " fix syntax highlighting glitch
+nmap U :syntax sync fromstart<cr>:redraw!<cr> " fix syntax highlighting glitch
 
 " splitting
 set splitright
